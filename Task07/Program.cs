@@ -1,17 +1,20 @@
-﻿// 11. Напишите программу, которая выводит случайное
-// трёхзначное число и удаляет вторую цифру этого
-// числа.
-// 456 -> 46
-// 782 -> 72
-// 918 -> 98
+﻿// 7. Напишите программу, которая принимает на вход
+// трёхзначное число и на выходе показывает
+// последнюю цифру этого числа.
+// 456 -> 6
+// 782 -> 2
+// 918 -> 8
 
-int number = new Random().Next(100, 1000);
-
-int RemoveSecondDigit(int num)
+int a;
+bool isNotInRange;
+do
 {
-	int firstDigit = num / 100;
-	int lastDigit = num % 10;
-	return firstDigit * 10 + lastDigit;
-}
+	Console.WriteLine("Введите трехзначное число: ");
+	a = Convert.ToInt32(Console.ReadLine());
+	isNotInRange = a < 100 || a > 999;
+	if (isNotInRange)
+		Console.WriteLine("Ошибка: введено не трёхзначное число! Повторите ввод.");
 
-Console.WriteLine($"{number} -> {RemoveSecondDigit(number)}");
+} while (isNotInRange);
+
+Console.WriteLine($"Последняя цифра числа {a} = {a % 10}");

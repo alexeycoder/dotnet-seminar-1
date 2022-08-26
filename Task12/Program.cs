@@ -1,18 +1,19 @@
-﻿// Задача 18: Напишите программу, которая по
-// заданному номеру четверти, показывает диапазон
-// возможных координат точек в этой четверти (x и y).
+﻿// 12. Напишите программу, которая будет принимать на
+// вход два числа и выводить, является ли второе число
+// кратным первому. Если число 2 не кратно числу 1, то
+// программа выводит остаток от деления.
+// 34, 5 -> не кратно, остаток 4
+// 16, 4 -> кратно
 
-Console.WriteLine("Введите номер четверти: ");
-int quarterId = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите первое число: ");
+decimal numberA = Convert.ToDecimal(Console.ReadLine());
 
-string GetRangeStr(int qur)
-{
-	string res = "Допустимый диапазон координат: ";
-	if (qur == 1) return res + "x > 0, y > 0";
-	if (qur == 2) return res + "x < 0, y > 0";
-	if (qur == 3) return res + "x < 0, y < 0";
-	if (qur == 4) return res + "x > 0, y < 0";
-	return "Некорректный номер четверти";
-}
+Console.WriteLine("Введите второе число: ");
+decimal numberB = Convert.ToDecimal(Console.ReadLine());
 
-Console.WriteLine(GetRangeStr(quarterId));
+decimal remainder = numberA % numberB;
+
+if (remainder == 0)
+	Console.WriteLine($"Число {numberA} кратно числу {numberB}");
+else
+	Console.WriteLine($"Число {numberA} не кратно числу {numberB}");

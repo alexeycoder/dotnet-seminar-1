@@ -1,21 +1,46 @@
-﻿// 14.Напишите программу, которая принимает на
-// вход число и проверяет, кратно ли оно
-// одновременно 7 и 23.
-// 14 -> нет
-// 46 -> нет
-// 161 -> да
+﻿// 9.Напишите программу, которая выводит
+// случайное число из отрезка [10, 99] и показывает
+// наибольшую цифру числа.
+// 78 -> 8
+// 12-> 2
+// 85 -> 8
 
-Console.WriteLine("Проверка числа на кратность одновременно 7 и 23.");
-Console.Write("Введите число: ");
-int number = Convert.ToInt32(Console.ReadLine());
+int number = new Random().Next(10, 100);
 
-bool IsMultiple(int num, int a, int b)
+Console.WriteLine($"Случайное двузначное число -> {number}");
+
+// int firstDigit = number / 10;
+// int secondDigit = number % 10;
+
+// if (firstDigit > secondDigit)
+// 	Console.WriteLine($"Наибольшая цифра из числа {number} -> {firstDigit}");
+// else if (secondDigit > firstDigit)
+// 	Console.WriteLine($"Наибольшая цифра из числа {number} -> {secondDigit}");
+// else
+// 	Console.WriteLine($"Обе цифры из числа {number} равны между собой -> {firstDigit}");
+
+int result = MaxDigit(number);
+
+if (result < 0)
+	Console.WriteLine($"Обе цифры двузнасного числа {number} равны между собой -> {-result} и {-result}");
+else
+	Console.WriteLine($"Наибольшая цифра двузначного числа {number} -> {result}");
+
+//Console.WriteLine(GetNthDigit(256, 2, 10));
+
+int MaxDigit(int num)
 {
-	return num % a == 0 && num % b == 0;
+	int firstDigit = num / 10;
+	int secondDigit = num % 10;
+	return firstDigit > secondDigit ? firstDigit : (secondDigit > firstDigit ? secondDigit : -firstDigit);
 }
 
-Console.Write(number);
-if (IsMultiple(number, 7, 23))
-	Console.WriteLine(" -> Да");
-else
-	Console.WriteLine(" -> Нет");
+// static int GetNthDigit(int num, int n, int numberBase)
+// {
+// 	// Skip (n-1) digits in base
+// 	for (int i = 1; i < n; i++)
+// 		num = num / numberBase;
+
+// 	// Nth digit from right in base
+// 	return num % numberBase;
+// }

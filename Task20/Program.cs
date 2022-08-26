@@ -1,58 +1,29 @@
-﻿// Задача 32: Напишите программу замена элементов
-// массива: положительные элементы замените на
-// соответствующие отрицательные, и наоборот.
-// [-4, -8, 8, 2] -> [4, 8, -8, -2]
+﻿// Задача 20: Напишите программу, которая
+// принимает на вход координаты двух точек и
+// находит расстояние между ними в 2D
+// пространстве.
+// A (3,6); B (2,1) -> 5,09
+// A (7,-5); B (1,-1) -> 7,21
 
-int[] arr = CreateArrayRndInt(12, -9, 9);
-PrintArray(arr);
+Console.WriteLine("Введите координаты первой точки: ");
+Console.Write("X: ");
+int x1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Y: ");
+int y1 = Convert.ToInt32(Console.ReadLine());
 
-SwitchSign(arr);
+Console.WriteLine("Введите координаты второй точки: ");
+Console.Write("X: ");
+int x2 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Y: ");
+int y2 = Convert.ToInt32(Console.ReadLine());
 
-Console.Write(" -> ");
 
-PrintArray(arr);
-
-Console.WriteLine();
-
-// Methods
-
-int[] CreateArrayRndInt(int size, int min, int max)
+double GetDist(int xa, int ya, int xb, int yb)
 {
-	if (size == 0)
-		return new int[] { };
-
-	Random rnd = new Random();
-	int[] array = new int[size];
-	for (int i = 0; i < size; ++i)
-	{
-		array[i] = rnd.Next(min, max + 1);
-	}
-	return array;
+	double dx = xa - xb;
+	double dy = ya - yb;
+	return Math.Sqrt(dx * dx + dy * dy);
 }
 
-void SwitchSign(int[] array)
-{
-	if (array.Length == 0)
-		return;
-
-	for (int i = 0; i < array.Length; ++i)
-	{
-		array[i] *= -1;
-	}
-}
-
-void PrintArray(int[] array)
-{
-	if (array == null || array.Length <= 0)
-	{
-		Console.WriteLine("Массив пуст.");
-		return;
-	}
-
-	Console.Write("[");
-	for (int i = 0; i < array.Length - 1; i++)
-	{
-		Console.Write($"{array[i]}, ");
-	}
-	Console.Write($"{array[array.Length - 1]}]");
-}
+double result = GetDist(x1, y1, x2, y2);
+Console.WriteLine($"A ({x1}, {y1}); B ({x2}, {y2}) -> {result:F2}");

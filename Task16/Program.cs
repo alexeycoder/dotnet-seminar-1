@@ -1,28 +1,24 @@
-﻿// Задача 26: Напишите программу, которая принимает
-// на вход число и выдаёт количество цифр в числе.
-// 456 -> 3
-// 78 -> 2
-// 89126 -> 5
+﻿// 16.Напишите программу, которая принимает на
+// вход два числа и проверяет, является ли одно
+// число квадратом другого.
+// 5, 25 -> да
+// -4, 16 -> да
+// 25, 5 -> да
+// 8,9 -> нет
 
-Console.Write("Введите целое число: ");
-int number = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Проверка, является ли одно число квадратом другого.");
+Console.Write("Введите первое число: ");
+int num1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите второе число: ");
+int num2 = Convert.ToInt32(Console.ReadLine());
 
-int result = GetNumberOfDigits(number);
-Console.WriteLine($"Количество цифр в числе {number} = {result}");
+Console.Write($"{num1}, {num2}");
+if (IsSquareEachOther(num1, num2))
+	Console.WriteLine($" -> Да");
+else
+	Console.WriteLine($" -> Нет");
 
-int GetNumberOfDigits(int num)
+bool IsSquareEachOther(int a, int b)
 {
-	if (num < 0)
-		num = -num;
-
-	if (num < 10)
-		return 1;
-
-	int count = 0;
-	while (num != 0)
-	{
-		++count;
-		num /= 10;
-	}
-	return count;
+	return a == b * b || b == a * a;
 }

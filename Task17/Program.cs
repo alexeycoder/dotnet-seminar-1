@@ -1,25 +1,29 @@
-﻿// Задача 28: Напишите программу, которая
-// принимает на вход число N и выдаёт
-// произведение чисел от 1 до N.
-// 4 -> 24
-// 5 -> 120
+﻿// 17. Напишите программу, которая принимает на вход
+// координаты точки (X и Y), причём X != 0 и Y != 0 и выдаёт
+// номер четверти плоскости, в которой находится эта точка.
 
-Console.Write("Введите целое положительное число: ");
-int number = Convert.ToInt32(Console.ReadLine());
-if (number <= 0)
+Console.WriteLine("Введите координаты точки: ");
+Console.Write("X: ");
+int ux = Convert.ToInt32(Console.ReadLine());
+Console.Write("Y: ");
+int uy = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine(GetQuarter(ux, uy));
+
+static string GetQuarter(int x, int y)
 {
-	Console.WriteLine("Ошибка: Некорректный ввод!");
-	return;
-}
-
-Console.WriteLine($"Произведение чисел от 1 до {number} = {Fact(number)}");
-
-int Fact(int num)
-{
-	int fact = 1;
-	for (int i = 1; i <= num; ++i)
-	{
-		fact *= i;
-	}
-	return fact;
+	if (x > 0 && y > 0)
+		return "Первая четверть";
+	else if (x < 0 && y > 0)
+		return "Вторая четверть";
+	else if (x < 0 && y < 0)
+		return "Третья четверть";
+	else if (x > 0 && y < 0)
+		return "Четвёртая четверть";
+	else if (x == 0 && y == 0)
+		return "Центр координат";
+	else if (x == 0)
+		return "Точка лежит на оси Y";
+	else // if (y == 0)
+		return "Точка лежит на оси X";
 }

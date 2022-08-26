@@ -1,20 +1,21 @@
-﻿// Задача 22: Напишите программу, которая
-// принимает на вход число (N) и выдаёт таблицу
-// квадратов чисел от 1 до N.
-// 5 -> 1, 4, 9, 16, 25.
-// 2 -> 1,4
+﻿// 14.Напишите программу, которая принимает на
+// вход число и проверяет, кратно ли оно
+// одновременно 7 и 23.
+// 14 -> нет
+// 46 -> нет
+// 161 -> да
 
-Console.Write("Введите натуральное число: ");
-int n = Convert.ToInt32(Console.ReadLine());
-if (n < 1)
-{
-	Console.WriteLine("Ошибка: Требуется целое положительное число!");
-	return;
-}
-PrintSquares(n);
+Console.WriteLine("Проверка числа на кратность одновременно 7 и 23.");
+Console.Write("Введите число: ");
+int number = Convert.ToInt32(Console.ReadLine());
 
-void PrintSquares(int a)
+bool IsMultiple(int num, int a, int b)
 {
-	for (int i = 1; i <= a; ++i)
-		Console.WriteLine($"{i,3}\t{i * i,-5}");
+	return num % a == 0 && num % b == 0;
 }
+
+Console.Write(number);
+if (IsMultiple(number, 7, 23))
+	Console.WriteLine(" -> Да");
+else
+	Console.WriteLine(" -> Нет");

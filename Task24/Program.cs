@@ -1,66 +1,26 @@
-﻿// Задача 39: Напишите программу, которая перевернёт
-// одномерный массив (последний элемент будет на первом
-// месте, а первый - на последнем и т.д.)
-// [1 2 3 4 5] -> [5 4 3 2 1]
-// [6 7 3 6] -> [6 3 7 6]
+﻿// Задача 24: Напишите программу, которая
+// принимает на вход число (А) и выдаёт сумму чисел
+// от 1 до А.
+// 7 -> 28
+// 4 -> 10
+// 8 -> 36
 
-Console.Write("Введите число элементов массива: ");
-int qty = Convert.ToInt32(Console.ReadLine());
-if (qty <= 0)
+Console.Write("Введите целое положительное число: ");
+int number = Convert.ToInt32(Console.ReadLine());
+if (number <= 0)
 {
-	Console.WriteLine("Ошибка: Число элементов должно быть натуральным числом!");
+	Console.WriteLine("Ошибка: Некорректный ввод!");
 	return;
 }
-int[] arr = CreateArrayRndInt(qty, 0, 9);
 
-PrintArray(arr);
+Console.WriteLine($"Сумма чисел от 1 до {number} = {Sum(number)}");
 
-ReverseArray(arr);
-
-Console.Write(" -> ");
-PrintArray(arr);
-
-Console.WriteLine();
-
-// Methods
-
-int[] CreateArrayRndInt(int size, int min, int max)
+int Sum(int end)
 {
-	if (size == 0)
-		return new int[] { };
-
-	Random rnd = new Random();
-	int[] array = new int[size];
-	for (int i = 0; i < size; ++i)
+	int sum = 0;
+	for (int i = 1; i <= end; ++i)
 	{
-		array[i] = rnd.Next(min, max + 1);
+		sum += i;
 	}
-
-	return array;
-}
-
-void ReverseArray(int[] array)
-{
-	for (int firstIndex = 0, lastIndex = array.Length - 1; lastIndex > firstIndex; ++firstIndex, --lastIndex)
-	{
-		var tmp = array[firstIndex];
-		array[firstIndex] = array[lastIndex];
-		array[lastIndex] = tmp;
-	}
-}
-
-void PrintArray(int[] array)
-{
-	if (array == null || array.Length <= 0)
-	{
-		Console.WriteLine("Массив пуст.");
-		return;
-	}
-
-	Console.Write("[");
-	for (int i = 0; i < array.Length - 1; i++)
-	{
-		Console.Write($"{array[i]}, ");
-	}
-	Console.Write($"{array[array.Length - 1]}]");
+	return sum;
 }

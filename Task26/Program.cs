@@ -1,42 +1,28 @@
-﻿// Задача 42: Напишите программу, которая будет преобразовывать
-// десятичное число в двоичное.
-// 45 -> 101101
-// 3 -> 11
-// 2 -> 10
+﻿// Задача 26: Напишите программу, которая принимает
+// на вход число и выдаёт количество цифр в числе.
+// 456 -> 3
+// 78 -> 2
+// 89126 -> 5
 
-Console.Write("Введите неотрицательное десятичное число: ");
-int decNum = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите целое число: ");
+int number = Convert.ToInt32(Console.ReadLine());
 
-long binNum = GetPseudoBinary(decNum);
+int result = GetNumberOfDigits(number);
+Console.WriteLine($"Количество цифр в числе {number} = {result}");
 
-Console.WriteLine($"{decNum} -> {binNum}");
-
-Console.Write("Recursive print: ");
-PrintDecToBin(decNum);
-Console.WriteLine();
-
-// Methods
-
-static long GetPseudoBinary(long decimalNumber)
+int GetNumberOfDigits(int num)
 {
-	long result = 0;
-	int i = 1;
+	if (num < 0)
+		num = -num;
 
-	while (decimalNumber > 0)
+	if (num < 10)
+		return 1;
+
+	int count = 0;
+	while (num != 0)
 	{
-		result += decimalNumber % 2 * i;
-		decimalNumber /= 2;
-		i *= 10;
+		++count;
+		num /= 10;
 	}
-
-	return result;
-}
-
-void PrintDecToBin(int num)
-{
-	if (num == 0)
-		return;
-
-	PrintDecToBin(num / 2);
-	Console.Write(num % 2);
+	return count;
 }

@@ -1,47 +1,18 @@
-﻿// Задача 28: Напишите программу, которая
-// принимает на вход число N и выдаёт
-// произведение чисел от 1 до N.
-// 4 -> 24
-// 5 -> 120
+﻿// Задача 18: Напишите программу, которая по
+// заданному номеру четверти, показывает диапазон
+// возможных координат точек в этой четверти (x и y).
 
-Console.Write("Введите число элементов массива: ");
-int qty = Convert.ToInt32(Console.ReadLine());
-if (qty <= 0)
+Console.WriteLine("Введите номер четверти: ");
+int quarterId = Convert.ToInt32(Console.ReadLine());
+
+string GetRangeStr(int qur)
 {
-	Console.WriteLine("Ошибка: Число элементов должно быть натуральным числом!");
-	return;
-}
-int[] result = GetArray(qty);
-PrintArray(result);
-
-// Methods
-
-int[] GetArray(int size)
-{
-	if (size == 0)
-		return new int[] { };
-
-	Random rnd = new Random();
-	int[] array = new int[size];
-	for (int i = 0; i < size; ++i)
-	{
-		array[i] = rnd.Next(0, 2);
-	}
-	return array;
+	string res = "Допустимый диапазон координат: ";
+	if (qur == 1) return res + "x > 0, y > 0";
+	if (qur == 2) return res + "x < 0, y > 0";
+	if (qur == 3) return res + "x < 0, y < 0";
+	if (qur == 4) return res + "x > 0, y < 0";
+	return "Некорректный номер четверти";
 }
 
-void PrintArray(int[] array)
-{
-	if (array == null || array.Length <= 0)
-	{
-		Console.WriteLine("Массив пуст.");
-		return;
-	}
-
-	Console.Write("[");
-	for (int i = 0; i < array.Length - 1; i++)
-	{
-		Console.Write($"{array[i]},");
-	}
-	Console.WriteLine($"{array[array.Length - 1]}]");
-}
+Console.WriteLine(GetRangeStr(quarterId));
