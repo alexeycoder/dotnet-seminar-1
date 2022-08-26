@@ -5,7 +5,7 @@
 // 5 -> 120
 
 Console.Write("Введите целое положительное число: ");
-int number = Convert.ToInt32(Console.ReadLine());
+double number = Math.Truncate(Convert.ToDouble(Console.ReadLine()));
 if (number <= 0)
 {
 	Console.WriteLine("Ошибка: Некорректный ввод!");
@@ -14,10 +14,10 @@ if (number <= 0)
 
 Console.WriteLine($"Произведение чисел от 1 до {number} = {Fact(number)}");
 
-int Fact(int num)
+double Fact(double num)
 {
-	int fact = 1;
-	for (int i = 1; i <= num; ++i)
+	double fact = 1;
+	for (double i = 1; i <= num; ++i)
 	{
 		fact *= i;
 	}
